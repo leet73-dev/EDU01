@@ -62,12 +62,21 @@
         .dark .border-gray-100 {
             border-color: #334155;
         }
+
+        /* Custom Scrollbar for Tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="text-gray-800 bg-slate-50 transition-colors duration-300">
 
     <!-- Theme Toggle Button -->
-    <button id="theme-toggle" onclick="toggleTheme()" class="fixed bottom-6 right-6 z-[100] bg-white dark:bg-blue-600 p-3 rounded-full shadow-2xl border border-gray-200 dark:border-blue-500 hover:scale-110 transition-transform">
+    <button id="theme-toggle" onclick="toggleTheme()" class="fixed bottom-6 right-6 z-[100] bg-white dark:bg-blue-600 p-3 rounded-full shadow-2xl border border-gray-200 dark:border-blue-500 hover:scale-110 transition-transform" aria-label="테마 변경">
         <!-- Sun Icon -->
         <svg id="theme-sun" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l.707.707M6.343 6.343l.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -82,8 +91,12 @@
     <header class="hero-gradient h-[60vh] flex flex-col items-center justify-center text-white text-center px-4">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">대한민국의 아름다운 섬, 독도</h1>
         <p class="text-lg md:text-xl max-w-2xl opacity-90">지리적 특성부터 역사적 증거까지, 독도가 우리 땅인 이유를 확인해보세요.</p>
-        <div class="mt-8">
+        
+        <!-- Action Buttons -->
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
             <button onclick="scrollToContent()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/50">탐색하기</button>
+            <a href="./01/index.html" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-bold transition-all">독도연표</a>
+            <a href="./02/02.html" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-bold transition-all">독도용어</a>
         </div>
     </header>
 
