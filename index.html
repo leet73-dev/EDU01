@@ -88,7 +88,7 @@
     </button>
 
     <!-- Header / Hero Section -->
-    <header class="hero-gradient h-[60vh] flex flex-col items-center justify-center text-white text-center px-4">
+    <header id="hero" class="hero-gradient h-[60vh] flex flex-col items-center justify-center text-white text-center px-4">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">대한민국의 아름다운 섬, 독도</h1>
         <p class="text-lg md:text-xl max-w-2xl opacity-90">지리적 특성부터 역사적 증거까지, 독도가 우리 땅인 이유를 확인해보세요.</p>
         
@@ -96,13 +96,19 @@
         <div class="mt-8 flex flex-wrap justify-center gap-4">
             <button onclick="scrollToContent()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/50">탐색하기</button>
             <a href="./01/index.html" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-bold transition-all">독도연표</a>
-            <a href="./02/index
-                .html" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-bold transition-all">독도용어</a>
+            <a href="./02/02.html" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-bold transition-all">독도용어</a>
         </div>
+    </header>
 
     <!-- Main Navigation Tabs -->
     <nav id="main-nav" class="sticky top-0 bg-white dark:bg-slate-900 shadow-md z-50 transition-colors duration-300">
-        <div class="max-w-5xl mx-auto flex overflow-x-auto no-scrollbar">
+        <div class="max-w-5xl mx-auto flex items-center overflow-x-auto no-scrollbar">
+            <!-- Home Button Added -->
+            <button onclick="scrollToTop()" class="py-4 px-6 text-gray-500 dark:text-slate-400 hover:text-blue-600 transition flex-shrink-0 border-b-4 border-transparent" title="홈으로">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </button>
             <button onclick="showTab('geo')" class="tab-btn flex-1 py-4 px-6 font-bold text-blue-600 border-b-4 border-blue-600 whitespace-nowrap">지리적 특성과 가치</button>
             <button onclick="showTab('history')" class="tab-btn flex-1 py-4 px-6 font-bold text-gray-500 dark:text-slate-400 hover:text-blue-600 border-b-4 border-transparent transition whitespace-nowrap">역사적 사료와 지도</button>
             <button onclick="showTab('conflict')" class="tab-btn flex-1 py-4 px-6 font-bold text-gray-500 dark:text-slate-400 hover:text-blue-600 border-b-4 border-transparent transition whitespace-nowrap">갈등과 해결 방안</button>
@@ -305,15 +311,21 @@
 
             document.getElementById(tabId).classList.add('active');
 
-            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
-            activeBtn.classList.remove('text-gray-500', 'dark:text-slate-400', 'border-transparent');
-            activeBtn.classList.add('text-blue-600', 'border-blue-600');
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-500', 'dark:text-slate-400', 'border-transparent');
+                activeBtn.classList.add('text-blue-600', 'border-blue-600');
+            }
             
             document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
         }
 
         function scrollToContent() {
             document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
